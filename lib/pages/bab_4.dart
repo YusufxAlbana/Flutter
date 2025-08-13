@@ -63,7 +63,7 @@ class _Bab4State extends State<Bab4> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Kalkulator Sederhana'),
+        title: const Text('Halaman Bab ke 4'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -92,19 +92,19 @@ class _Bab4State extends State<Bab4> {
               children: [
                 ElevatedButton(
                   onPressed: () => _hitung('+'),
-                  child: const Text('+'),
+                  child: const Text('Tambah'),
                 ),
                 ElevatedButton(
                   onPressed: () => _hitung('-'),
-                  child: const Text('-'),
+                  child: const Text('Kurang'),
                 ),
                 ElevatedButton(
                   onPressed: () => _hitung('x'),
-                  child: const Text('x'),
+                  child: const Text('Kali'),
                 ),
                 ElevatedButton(
                   onPressed: () => _hitung('/'),
-                  child: const Text('/'),
+                  child: const Text('Bagi'),
                 ),
               ],
             ),
