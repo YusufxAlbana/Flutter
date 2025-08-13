@@ -1,64 +1,121 @@
 import 'package:flutter/material.dart';
 
-/* 
-1. Buatlah sebuah proyek Flutter baru bernama my_profile_card.
-2. Desain sebuah kartu profil sederhana yang menampilkan:
-a. Foto profil (gunakan Image.network dari URL atau Image.asset jika
-Anda punya gambar lokal).
-b. Nama lengkap Anda (Text).
-c. Profesi/Pekerjaan Anda (Text).
-d. Tiga ikon media sosial (Icon) yang disusun secara horizontal (Row).
-3. Gunakan Column untuk menyusun elemen-elemen ini secara vertikal.
-4. Gunakan Container atau Card untuk membungkus seluruh kartu profil Anda,
-berikan warna latar belakang dan sedikit padding.
-5. Pastikan semua elemen terletak di tengah layar menggunakan Center
-widget.
-6. Eksplorasi penggunaan SizedBox untuk memberikan jarak antar widget jika
-diperlukan.
-7. Jalankan aplikasi Anda di emulator atau perangkat fisik, lalu buka Flutter
-DevTools dan gunakan Widget Inspector untuk melihat struktur widget yang
-telah Anda buat 
-*/
-
-class Bab4 extends StatelessWidget {
+class Bab4 extends StatefulWidget {
   const Bab4({super.key});
+
+  @override
+  State<Bab4> createState() => _Bab4State();
+}
+
+class _Bab4State extends State<Bab4> {
+  final TextEditingController _angka1Controller = TextEditingController();
+  final TextEditingController _angka2Controller = TextEditingController();
+  String _hasil = '';
+
+  void _hitung(String operator) {
+    double? angka1 = double.tryParse(_angka1Controller.text);
+    double? angka2 = double.tryParse(_angka2Controller.text);
+
+    if (angka1 == null || angka2 == null) {
+      setState(() {
+        _hasil = 'Input harus berupa angka!';
+      });
+      return;
+    }
+
+    double hasil;
+    switch (operator) {
+      case '+':
+        hasil = angka1 + angka2;
+        break;
+      case '-':
+        hasil = angka1 - angka2;
+        break;
+      case 'x':
+        hasil = angka1 * angka2;
+        break;
+      case '/':
+        if (angka2 == 0) {
+          setState(() {
+            _hasil = 'Tidak bisa dibagi 0!';
+          });
+          return;
+        }
+        hasil = angka1 / angka2;
+        break;
+      default:
+        hasil = 0;
+    }
+
+    setState(() {
+      _hasil = 'Hasil: $hasil';
+    });
+  }
+
+  @override
+  void dispose() {
+    _angka1Controller.dispose();
+    _angka2Controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Halaman Bab ke cvb'),
+        title: const Text('Kalkulator Sederhana'),
       ),
-       body: Center(
-     child: Column(
-       mainAxisAlignment: MainAxisAlignment.center,
-       children: [
-         Image.asset(
-           'assets/images/hai.jpg',
-           width: 150, // atur ukuran sesuai kebutuhan
-           height: 150,
-         ),
-         const SizedBox(height: 16),
-         Column(
-          mainAxisAlignment: MainAxisAlignment.center, // Penataan vertikal
-          crossAxisAlignment: CrossAxisAlignment.center, // Penataan horizontal (alignment)
-          children: const [ // Daftar widget anak-anak
-          Text('Yusuf Nawaf Albana'),
-          Text('Pekerjaan : Siswa IDN'),
-         ],
-        ),
-                Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Penataan vertikal
-          children: const [
-            Icon(Icons.home),
-            Icon(Icons.settings),
-            Icon(Icons.person),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            TextField(
+              controller: _angka1Controller,
+              decoration: const InputDecoration(
+                labelText: 'Angka 1',
+                border: OutlineInputBorder(),
+              ),
+              keyboardType: TextInputType.number,
+            ),
+            const SizedBox(height: 16),
+            TextField(
+              controller: _angka2Controller,
+              decoration: const InputDecoration(
+                labelText: 'Angka 2',
+                border: OutlineInputBorder(),
+              ),
+              keyboardType: TextInputType.number,
+            ),
+            const SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: () => _hitung('+'),
+                  child: const Text('+'),
+                ),
+                ElevatedButton(
+                  onPressed: () => _hitung('-'),
+                  child: const Text('-'),
+                ),
+                ElevatedButton(
+                  onPressed: () => _hitung('x'),
+                  child: const Text('x'),
+                ),
+                ElevatedButton(
+                  onPressed: () => _hitung('/'),
+                  child: const Text('/'),
+                ),
+              ],
+            ),
+            const SizedBox(height: 24),
+            Text(
+              _hasil,
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
           ],
-        )
-
-       ],
-     ),
-   ),
-  );
- }
+        ),
+      ),
+    );
+  }
 }
