@@ -2,7 +2,7 @@
 import 'pages/bab_3.dart';
 import 'package:flutter/material.dart';
 import 'pages/bab_2.dart';
-import '';
+import 'pages/bab_4.dart';
 
 
 void main() {
@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
       routes: {
         'Bab2': (context) => const Bab2(),
         'Bab3': (context) => const Bab3(),
+        'Bab4': (context) => const Bab4(),
       },
     );
   }
