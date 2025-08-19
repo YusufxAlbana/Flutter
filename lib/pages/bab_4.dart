@@ -72,7 +72,7 @@ class _Bab4State extends State<Bab4> {
             TextField(
               controller: _angka1Controller,
               decoration: const InputDecoration(
-                labelText: 'Angka 1',
+                labelText: 'masukkan angka pertama',
                 border: OutlineInputBorder(),
               ),
               keyboardType: TextInputType.number,
@@ -81,7 +81,7 @@ class _Bab4State extends State<Bab4> {
             TextField(
               controller: _angka2Controller,
               decoration: const InputDecoration(
-                labelText: 'Angka 2',
+                labelText: 'masukkan angka kedua',
                 border: OutlineInputBorder(),
               ),
               keyboardType: TextInputType.number,
