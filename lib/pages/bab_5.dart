@@ -64,7 +64,8 @@ class ProductListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Daftar Buah"),
+        title: const Text("product catalog app"),
+        centerTitle: true,
       ),
       body: ListView.builder(
         itemCount: products.length,

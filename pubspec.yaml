@@ -9,9 +9,9 @@ environment:
   sdk: ^3.6.0
 
 dependencies:
-  flutter:
+  flutter:            # ← harus diindent 2 spasi biar masuk ke dependencies
     sdk: flutter
-  cupertino_icons: ^1.0.8
+  http: ^1.2.1        # versi http
 
 dev_dependencies:
   flutter_test:
