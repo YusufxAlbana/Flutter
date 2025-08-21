@@ -9,19 +9,21 @@ class Bab2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Halaman Bab 2'),
-        backgroundColor: Colors.tealAccent,
+        title: const Text ('halaman Bab 2'),
+        centerTitle: true,
+        backgroundColor: Colors.green,
       ),
-       body: const Center(
-        child: Text(
-          '| Yusuf Nawaf Albana XI RPL |',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 30, // Ukuran font lebih besar
-            fontWeight: FontWeight.bold,
-          ),
+    body: Center(
+      child: Text(
+        '|Yusuf Nawaf Albana \n XI RPL',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontSize: 20,
+          color: Colors.red,
+          fontWeight: FontWeight.bold,
         ),
       ),
+    ),
     );
   }
 }
