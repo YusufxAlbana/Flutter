@@ -5,6 +5,7 @@ import 'pages/bab_2.dart';
 import 'pages/bab_4.dart';
 import 'pages/bab_5.dart';
 import 'pages/bab_6.dart';
+import 'pages/bab_7.dart';
 import 'pages/bab 5/basic_routing.dart';
 import 'pages/bab 5/named_route.dart';
 import 'pages/bab 5/passing_data_antar_halaman.dart';
@@ -22,13 +23,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: 'Bab5', // Match the route name exactly
+      initialRoute: 'Bab7', // Match the route name exactly
       routes: {
         'Bab2': (context) => const Bab2(),
         'Bab3': (context) => const Bab3(),
         'Bab4': (context) => const Bab4(),
         'Bab5': (context) => Bab5(),
         'Bab6': (context) => Bab6(),
+        'Bab7': (context) => Bab7(),
 
         //bab 5 rincian materi
         'BR': (context) => const basic_routing(),

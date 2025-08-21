@@ -9,9 +9,9 @@ environment:
   sdk: ^3.6.0
 
 dependencies:
-  flutter:            # ← harus diindent 2 spasi biar masuk ke dependencies
+  flutter:
     sdk: flutter
-  http: ^1.2.1        # versi http
+  http: ^1.2.1
 
 dev_dependencies:
   flutter_test:
