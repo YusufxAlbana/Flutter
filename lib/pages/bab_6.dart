@@ -30,8 +30,8 @@ my_gallery_app. */
 
 import 'package:flutter/material.dart';
 
-class Bab6 extends StatelessWidget {
-  const Bab6({super.key});
+class Bab6Asli extends StatelessWidget {
+  const Bab6Asli({super.key});
 
   @override
   Widget build(BuildContext context) {

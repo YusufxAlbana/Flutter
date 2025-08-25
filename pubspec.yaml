@@ -7,11 +7,13 @@ version: 1.0.0+1
 
 environment:
   sdk: ^3.6.0
-
 dependencies:
   flutter:
     sdk: flutter
-  http: ^1.2.1
+  http: ^1.2.1 # bab 7
+  get: ^4.6.5 # bab 9
+  sqflite: ^2.3.0 # bab 8
+
 
 dev_dependencies:
   flutter_test:

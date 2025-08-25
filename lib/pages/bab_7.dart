@@ -68,14 +68,15 @@ class Photo {
     required this.thumbnailUrl,
   });
 
-  factory Photo.fromJson(Map<String, dynamic> json) {
-    return Photo(
-      id: json['id'],
-      title: json['title'],
-      url: json['url'],
-      thumbnailUrl: json['thumbnailUrl'],
-    );
-  }
+factory Photo.fromJson(Map<String, dynamic> json) {
+  int id = json['id'];
+  return Photo(
+    id: id,
+    title: json['title'],
+    url: "https://picsum.photos/id/$id/500/500",       // full image
+    thumbnailUrl: "https://picsum.photos/id/$id/150/150", // thumbnail
+  );
+}
 }
 
 // Fetch data dari API
@@ -178,34 +179,71 @@ class PhotoListScreen extends StatelessWidget {
 
 class PhotoDetailScreen extends StatelessWidget {
   final Photo photo;
-
   const PhotoDetailScreen({super.key, required this.photo});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(photo.title)),
+      appBar: AppBar(
+        title: const Text('Detail Foto'),
+        centerTitle: true,
+        backgroundColor: Colors.deepPurple,
+      ),
       body: Center(
-        child: Column(
-          children: [
-            Expanded(
-              child: Image.network(
-                photo.url,
-                fit: BoxFit.contain,
-                errorBuilder: (context, error, stackTrace) =>
-                    const Icon(Icons.error, size: 50, color: Colors.red),
+        child: SingleChildScrollView(
+          child: Card(
+            elevation: 8,
+            margin: const EdgeInsets.all(24),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(24),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ClipRRect(
+  borderRadius: BorderRadius.circular(16),
+  child: AspectRatio(
+    aspectRatio: 1, // 1:1 kotak, bisa diubah ke 16/9 kalau mau landscape
+    child: Image.network(
+      photo.url,
+      fit: BoxFit.cover,
+      width: double.infinity,
+      errorBuilder: (context, error, stackTrace) =>
+          const Icon(Icons.broken_image, size: 80, color: Colors.red),
+    ),
+  ),
+),
+
+                  const SizedBox(height: 20),
+                  Text(
+                    photo.title,
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.deepPurple,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 24),
+                  ElevatedButton.icon(
+                    onPressed: () => Navigator.pop(context),
+                    icon: const Icon(Icons.arrow_back),
+                    label: const Text('Kembali'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.deepPurple,
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    ),
+                  ),
+                ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                photo.title,
-                style:
-                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
-              ),
-            )
-          ],
+          ),
         ),
       ),
     );
