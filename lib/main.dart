@@ -1,7 +1,6 @@
-// ...............
 import 'package:flutter/material.dart';
-import 'pages/bab_3.dart';
 import 'pages/bab_2.dart';
+import 'pages/bab_3.dart';
 import 'pages/bab_4.dart';
 import 'pages/bab_5.dart';
 import 'pages/bab_6.dart';
@@ -11,7 +10,7 @@ import 'pages/bab 5/named_route.dart';
 import 'pages/bab 5/passing_data_antar_halaman.dart';
 import 'pages/bab 5/melalui_argumen.dart';
 import 'pages/bab 5/mengembalikan_data_dari_halaman_yang_di-pop.dart';
-
+import 'pages/bab_8.dart'; 
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +22,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: 'Bab7', // Match the route name exactly
       routes: {
         'Bab2': (context) => const Bab2(),
         'Bab3': (context) => const Bab3(),
@@ -31,15 +29,14 @@ class MyApp extends StatelessWidget {
         'Bab5': (context) => Bab5(),
         'Bab6': (context) => Bab6(),
         'Bab7': (context) => Bab7(),
+        'Bab8': (context) => const Bab8(), 
 
-        //bab 5 rincian materi
+        // bab 5 rincian materi
         'BR': (context) => const basic_routing(),
-        'NR': (context) => namedRoute(), // ga bisa anjir, modul IDN sesat
-        'PDAH': (context) => const halaman_pertama(), // IDN lagi baik
-        'MA': (context) => MelaluiArgumen(), // setiap make named Routa Pasti error
-        'MDDHYDP': (context) => const halamanUtama(), 
-        
-        
+        'NR': (context) => namedRoute(),
+        'PDAH': (context) => const halaman_pertama(),
+        'MA': (context) => MelaluiArgumen(),
+        'MDDHYDP': (context) => const halamanUtama(),
       },
     );
   }
